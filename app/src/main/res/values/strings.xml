@@ -6,4 +6,8 @@
     <string name="phone_number_label">Phone Number</string>
     <string name="submit_btn_text">Submit</string>
     <string name="reset_btn_text">Reset</string>
+
+    <string name="user_name_label">User Name</string>
+    <string name="password_label">Password</string>
+    <string name="login_btn_text">LogIn</string>
 </resources>
