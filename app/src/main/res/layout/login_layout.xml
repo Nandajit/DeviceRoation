@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="loginVM"
+            type="com.example.deviceroation.LoginViewModel" />
+    </data>
 
     <android.support.constraint.ConstraintLayout android:layout_height="match_parent"
         android:layout_width="match_parent">
@@ -23,7 +27,8 @@
                 android:layout_height="match_parent"
                 android:hint="@string/user_name_label"
                 android:maxLines="1"
-                android:inputType="text"/>
+                android:inputType="text"
+                android:text="@={loginVM.userName}"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -42,8 +47,20 @@
                 android:layout_height="match_parent"
                 android:hint="@string/user_name_label"
                 android:maxLines="1"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword"
+                android:text="@={loginVM.password}"/>
         </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/password_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:id="@+id/login_btn"
+            android:text="@string/login_btn_text"
+            android:onClick="@{()->loginVM.login()}"/>
 
     </android.support.constraint.ConstraintLayout>
 </layout>
