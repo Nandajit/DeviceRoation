@@ -1,9 +1,12 @@
 package com.example.deviceroation;
 
+import android.databinding.DataBindingUtil;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.example.deviceroation.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,10 +15,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
         Log.d(TAG,"onCrete");
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().add(R.id.user_info_fragment_frame,new UserInputFragment(),"UserInfoFragment").commit();
+        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding.setMainVM(new MainActivityViewModel());
     }
 
     @Override
