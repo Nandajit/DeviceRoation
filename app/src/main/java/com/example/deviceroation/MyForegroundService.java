@@ -21,17 +21,20 @@ public class MyForegroundService extends Service {
     @Override
     public void onCreate() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID,"", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel channel = new NotificationChannel("1","mynotification", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager managerCompat = getSystemService(NotificationManager.class);
+            managerCompat.createNotificationChannel(channel);
         }
         super.onCreate();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if(intent.getAction().equals(PLAY_ACTION)){
+
+        if(intent.getAction()!=null && intent.getAction().equals(PLAY_ACTION)){
 
         }
-        else if(intent.getAction().equals(PAUSE_ACTION)){
+        else if(intent.getAction()!=null && intent.getAction().equals(PAUSE_ACTION)){
 
         }
         else {
